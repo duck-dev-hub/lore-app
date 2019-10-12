@@ -1,14 +1,12 @@
 import React from 'react'
-import {View, Text} from 'react-native'
 import {ThemeProvider} from 'styled-components/native'
 
 import theme from './theme'
+import Navigation from '~/navigation/Navigation'
 
 const App = () => (
   <ThemeProvider theme={theme}>
-    <View>
-      <Text>Olá Mundo</Text>
-    </View>
+    <Navigation />
   </ThemeProvider>
 )
 
