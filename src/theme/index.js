@@ -10,14 +10,15 @@ const theme = {
   },
   hsl: {
     white: 'hsl(0, 0%, 100%)',
-    whiter: 'hsl(0, 0%, 98%)',
+    whiter: '#ffffff',
     greyter: 'hsl(235, 19%, 75%)',
     darker: 'hsl(0, 0%, 13%)',
     orange: 'hsl(21, 100%, 56%)'
   },
   metrics: {
     min: 10,
-    max: 20
+    max: 20,
+    radius: 4
   }
 }
 

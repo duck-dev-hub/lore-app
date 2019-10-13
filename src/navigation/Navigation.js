@@ -1,24 +1,19 @@
 import {createAppContainer} from 'react-navigation'
 import {createStackNavigator} from 'react-navigation-stack'
 
-import Header from '~/components/Header/Header'
-
 import Home from '~/screens/Home/Home'
 import Cart from '~/screens/Cart/Cart'
 
-const Navigation = createStackNavigator({
-  Home: {
-    screen: Home,
-    navigationOptions: {
-      header: Header
-    }
+const Navigation = createStackNavigator(
+  {
+    Home,
+    Cart
   },
-  Cart: {
-    screen: Cart,
-    navigationOptions: {
-      header: Header
+  {
+    defaultNavigationOptions: {
+      header: null
     }
   }
-})
+)
 
 export default createAppContainer(Navigation)

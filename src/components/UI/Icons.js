@@ -7,3 +7,10 @@ export const Voltar = styled(Feather).attrs({
 })`
   color: ${({theme}) => theme.hsl.darker};
 `
+export const Cart = styled(Feather).attrs({
+  name: 'shopping-bag',
+  size: 14
+})`
+  color: ${({theme}) => theme.hsl.darker};
+  font-weight: 300;
+`
