@@ -29,7 +29,7 @@ class Carrinho extends Component {
     return (
       <Container>
         <List
-          render={tmp}
+          data={tmp}
           keyExtractor={item => String(item.id)}
           renderItem={({item}) => (
             <Product>
