@@ -22,7 +22,7 @@ export const CircleLine = styled.View`
   height: 50px;
   width: 50px;
   border-radius: 25px;
-  border-radius: 2px solid ${({theme}) => theme.hex.purple};
+  border: 2px solid ${({theme}) => theme.hex.purple};
   justify-content: center;
   align-items: center;
   background-color: transparent;

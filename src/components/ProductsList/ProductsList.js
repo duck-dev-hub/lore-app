@@ -60,7 +60,7 @@ const Name = styled.Text.attrs({
 `
 
 const Price = styled(Name)`
-  color: ${({theme}) => theme.hsl.pink};
+  color: ${({theme}) => theme.hsl.purple};
   margin-bottom: 0;
 `
 

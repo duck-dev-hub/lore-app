@@ -1,12 +1,12 @@
 import React, {Component} from 'react'
 
-import Container from '~/components/UI/Container'
-
 import TargetButton from '~/components/UI/TargetButton'
 import {shadowMax} from '~/theme/shadow'
 import {CircleLine, Voltar} from '~/components/UI/Icons'
+import Container from '~/components/UI/Container'
 
 import {
+  Scroll,
   Section,
   ImageContainer,
   Image,
@@ -33,33 +33,33 @@ class Detalhes extends Component {
 
     return (
       <Container>
-        <Section>
-          <ImageContainer>
-            <Image source={{uri: product.image}} />
-          </ImageContainer>
-        </Section>
+        <Scroll>
+          <Section>
+            <ImageContainer>
+              <Image source={{uri: product.image}} />
+            </ImageContainer>
+          </Section>
 
-        <Section>
-          <Brand>{product.brand}</Brand>
-          <Name>{product.name}</Name>
-          <Price>{product.price}</Price>
-        </Section>
+          <Section>
+            <Brand>{product.brand}</Brand>
+            <Name>{product.name}</Name>
+            <Price>R$ {product.price}</Price>
+          </Section>
 
-        <Section style={styles.marginBottom}>
-          <TargetButton>
-            <Buy style={shadowMax}>
-              <BuyText>Adcionar ao carrinho</BuyText>
-            </Buy>
-          </TargetButton>
-        </Section>
+          <Section>
+            <TargetButton>
+              <Buy style={shadowMax}>
+                <BuyText>Adcionar ao carrinho</BuyText>
+              </Buy>
+            </TargetButton>
+          </Section>
 
-        <Section style={styles.center}>
-          <TargetButton onPress={goBack}>
-            <CircleLine>
+          <Section style={styles.absoluteTop}>
+            <TargetButton onPress={goBack}>
               <Voltar />
-            </CircleLine>
-          </TargetButton>
-        </Section>
+            </TargetButton>
+          </Section>
+        </Scroll>
       </Container>
     )
   }

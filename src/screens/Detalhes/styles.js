@@ -5,13 +5,26 @@ const {width} = Dimensions.get('window')
 
 export const styles = StyleSheet.create({
   marginBottom: {
-    marginBottom: 40
+    marginBottom: 30
   },
   center: {
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  absoluteTop: {
+    position: 'absolute',
+    top: 20,
+    left: 0
   }
 })
+
+export const Scroll = styled.ScrollView.attrs({
+  contentContainerStyle: {
+    paddingTop: 10
+  }
+})`
+  padding: 0 ${({theme}) => theme.metrics.max}px;
+`
 
 export const Section = styled.View`
   align-self: stretch;
@@ -32,34 +45,34 @@ export const Image = styled.Image.attrs({
   }
 })`
   height: ${width - 42}px;
-  width: auto;
+  width: 50%;
 `
 
 export const Name = styled.Text`
   font-size: 18px;
   font-weight: bold;
   color: ${({theme}) => theme.hsl.darker};
-  margin-bottom: ${({theme}) => theme.metrics.min};
+  margin-bottom: ${({theme}) => theme.metrics.min / 2};
 `
 
 export const Price = styled.Text`
   font-size: 24px;
   font-weight: bold;
   color: ${({theme}) => theme.hsl.purple};
-  margin-bottom: ${({theme}) => theme.metrics.min}px;
+  margin-bottom: ${({theme}) => theme.metrics.min / 2}px;
 `
 
 export const Brand = styled.Text`
   font-size: 14px;
   font-weight: bold;
-  color: ${({theme}) => theme.hsl.grey};
-  margin-bottom: ${({theme}) => theme.metrics.min}px;
+  color: ${({theme}) => theme.hsl.greyter};
+  margin-bottom: ${({theme}) => theme.metrics.min / 2}px;
 `
 
 export const Buy = styled.View`
   align-self: stretch;
   height: 40px;
-  background-color: ${({theme}) => theme.hsl.orange};
+  background-color: ${({theme}) => theme.hsl.purple};
   justify-content: center;
   align-items: center;
   border-radius: ${({theme}) => theme.metrics.radius}px;
