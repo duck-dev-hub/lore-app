@@ -64,12 +64,12 @@ const Price = styled(Name)`
   margin-bottom: 0;
 `
 
-const ProductsList = ({data}) => (
+const ProductsList = ({data, pressInProduct}) => (
   <List
     data={data}
     keyExtractor={item => String(item.id)}
     renderItem={({item}) => (
-      <Product>
+      <Product onPress={() => pressInProduct(item)}>
         <ProductContainer style={shadow}>
           <Image source={{uri: item.image}} />
           <Footer>

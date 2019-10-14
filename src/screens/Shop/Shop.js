@@ -21,12 +21,19 @@ class Shop extends Component {
     this.setState({products: data})
   }
 
+  handleChoseProduct = product => {
+    const {navigation} = this.props
+
+    navigation.navigate('Detalhes', {product})
+  }
+
   render() {
-    const {products} = this.state
+    const {products} = this.state // estatico ainda
+    const {handleChoseProduct} = this
 
     return (
       <Container>
-        <ProductList data={tmp} />
+        <ProductList data={tmp} pressInProduct={handleChoseProduct} />
         <BottomTarget>
           <Circle style={shadow}>
             <CartIcon />
