@@ -27,14 +27,20 @@ class Shop extends Component {
     navigation.navigate('Detalhes', {product})
   }
 
+  goCarrinho = () => {
+    const {navigation} = this.props
+
+    navigation.navigate('Carrinho')
+  }
+
   render() {
     const {products} = this.state // estatico ainda
-    const {handleChoseProduct} = this
+    const {handleChoseProduct, goCarrinho} = this
 
     return (
       <Container>
         <ProductList data={tmp} pressInProduct={handleChoseProduct} />
-        <BottomTarget>
+        <BottomTarget onPress={goCarrinho}>
           <Circle style={shadow}>
             <CartIcon />
           </Circle>

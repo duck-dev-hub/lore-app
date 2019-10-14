@@ -40,3 +40,11 @@ export const BottomTarget = styled(TargetButton)`
   bottom: ${({theme}) => theme.metrics.max}px;
   right: ${({theme}) => theme.metrics.max}px;
 `
+
+export const X = styled(Feather).attrs({
+  name: 'X',
+  size: 16
+})`
+  color: ${({theme}) => theme.hsl.darker};
+  font-weight: normal;
+`
