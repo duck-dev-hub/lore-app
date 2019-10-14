@@ -7,7 +7,9 @@ const theme = {
     orange: '#ff6f20',
     darkTransparent: 'rgba(33, 33, 33, 0.18)',
     darkerTransparent: 'rgba(33, 33, 33, 0.5)',
-    pink: '#FF5668'
+    greyTransparent: 'rgba(178,180,203,0.16)',
+    pink: '#FF5668',
+    purple: '#4D53E0'
   },
   hsl: {
     white: 'hsl(0, 0%, 100%)',
@@ -15,7 +17,8 @@ const theme = {
     greyter: 'hsl(235, 19%, 75%)',
     darker: 'hsl(0, 0%, 13%)',
     orange: 'hsl(21, 100%, 56%)',
-    pink: 'hsl(354, 100%, 67%)'
+    pink: 'hsl(354, 100%, 67%)',
+    purple: 'hsl(238, 70%, 59%)'
   },
   metrics: {
     min: 10,

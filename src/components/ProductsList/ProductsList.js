@@ -3,8 +3,7 @@ import styled from 'styled-components/native'
 import {Dimensions} from 'react-native'
 
 import {shadow} from '~/theme/shadow'
-import Header from '~/components/Header/Header'
-import TabBar from '~/components/TapBar/TabBar'
+import TabBar from '~/components/TabBar/TabBar'
 
 const {width} = Dimensions.get('window')
 

@@ -1,15 +1,17 @@
 import {createAppContainer} from 'react-navigation'
 import {createStackNavigator} from 'react-navigation-stack'
 
-import Home from '~/screens/Home/Home'
-import Cart from '~/screens/Cart/Cart'
+import Shop from '~/screens/Shop/Shop'
+import Detalhes from '~/screens/Detalhes/Detalhes'
+import Carrinho from '~/screens/Carrinho/Carrinho'
 
 import Header from '~/components/Header/Header'
 
 const Navigation = createStackNavigator(
   {
-    Home,
-    Cart
+    Shop,
+    Detalhes,
+    Carrinho
   },
   {
     defaultNavigationOptions: {

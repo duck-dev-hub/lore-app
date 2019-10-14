@@ -13,7 +13,7 @@ export const Circle = styled.View`
   height: 50px;
   width: 50px;
   border-radius: 25px;
-  background-color: ${({theme}) => theme.hsl.pink};
+  background-color: ${({theme}) => theme.hsl.purple};
   justify-content: center;
   align-items: center;
 `

@@ -8,7 +8,7 @@ import {Circle, CartIcon, BottomTarget} from '~/components/UI/Icons'
 import tmp from './tmp'
 import {shadow} from '~/theme/shadow'
 
-class Home extends Component {
+class Shop extends Component {
   state = {
     products: []
   }
@@ -37,4 +37,4 @@ class Home extends Component {
   }
 }
 
-export default Home
+export default Shop

@@ -27,6 +27,6 @@ export const Dot = styled.View`
   height: 6px;
   width: 6px;
   background-color: ${({theme, active}) =>
-    active ? theme.hsl.pink : theme.hex.darkTransparent};
+    active ? theme.hsl.purple : theme.hex.darkTransparent};
   border-radius: 3px;
 `
