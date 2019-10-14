@@ -104,3 +104,15 @@ export const FinalizarText = styled.Text`
   text-transform: uppercase;
   font-weight: bold;
 `
+export const VazioContainer = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  padding: ${({theme}) => theme.metrics.max}px;
+`
+
+export const Vazio = styled.Text`
+  text-align: center;
+  color: ${({theme}) => theme.hsl.greyter};
+  font-weight: bold;
+`

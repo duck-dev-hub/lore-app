@@ -1,19 +1,23 @@
-import React, {Component} from 'react'
+import React, {Component, Fragment} from 'react'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
+import {ActivityIndicator} from 'react-native'
 
+import ShopActions from '~/store/ducks/shop'
 import Container from '~/components/UI/Container'
 import ProductList from '~/components/ProductsList/ProductsList'
 import api from '~/services/api'
 import {Circle, CartIcon, BottomTarget} from '~/components/UI/Icons'
 
-import tmp from './tmp'
 import {shadow} from '~/theme/shadow'
+import theme from '~/theme'
 
 class Shop extends Component {
-  state = {
-    products: []
-  }
+  componentDidMount() {
+    const {requestProducts} = this.props
 
-  componentDidMount() {}
+    requestProducts()
+  }
 
   async _getProducts() {
     const {data} = await api.get('/')
@@ -34,12 +38,23 @@ class Shop extends Component {
   }
 
   render() {
-    const {products} = this.state // estatico ainda
+    const {products, loading} = this.props
     const {handleChoseProduct, goCarrinho} = this
 
     return (
       <Container>
-        <ProductList data={tmp} pressInProduct={handleChoseProduct} />
+        {loading ? (
+          <ActivityIndicator size={16} color={theme.hsl.purple} />
+        ) : (
+          <Fragment>
+            {products.length > 0 && (
+              <ProductList
+                data={products}
+                pressInProduct={handleChoseProduct}
+              />
+            )}
+          </Fragment>
+        )}
         <BottomTarget onPress={goCarrinho}>
           <Circle style={shadow}>
             <CartIcon />
@@ -50,4 +65,14 @@ class Shop extends Component {
   }
 }
 
-export default Shop
+const mapStateToProps = state => ({
+  products: state.shop.products,
+  loading: state.shop.loading
+})
+
+const mapActionsToProps = dispatch => bindActionCreators(ShopActions, dispatch)
+
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(Shop)
