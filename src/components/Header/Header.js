@@ -12,7 +12,6 @@ export const HeaderContainer = styled.View`
   align-self: stretch;
   border-bottom-width: 1px;
   border-bottom-color: ${({theme}) => theme.hex.darkTransparent};
-  margin-bottom: ${({theme}) => theme.metrics.max}px;
 `
 export const Title = styled.Text`
   font-size: 14px;
@@ -22,10 +21,10 @@ export const Title = styled.Text`
   text-align: center;
 `
 
-const Header = () => (
+const Header = ({scene}) => (
   <HeaderContainer>
     <View />
-    <Title>Home</Title>
+    <Title>{scene.route.routeName}</Title>
     <View />
   </HeaderContainer>
 )

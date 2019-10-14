@@ -2,9 +2,11 @@ import React, {Component} from 'react'
 
 import Container from '~/components/UI/Container'
 import ProductList from '~/components/ProductsList/ProductsList'
+import api from '~/services/api'
+import {Circle, CartIcon, BottomTarget} from '~/components/UI/Icons'
 
 import tmp from './tmp'
-import BottomBar from './BottomBar/BottomBar'
+import {shadow} from '~/theme/shadow'
 
 class Home extends Component {
   state = {
@@ -25,7 +27,11 @@ class Home extends Component {
     return (
       <Container>
         <ProductList data={tmp} />
-        <BottomBar />
+        <BottomTarget>
+          <Circle style={shadow}>
+            <CartIcon />
+          </Circle>
+        </BottomTarget>
       </Container>
     )
   }

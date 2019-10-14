@@ -4,6 +4,7 @@ import {Dimensions} from 'react-native'
 
 import {shadow} from '~/theme/shadow'
 import Header from '~/components/Header/Header'
+import TabBar from '~/components/TapBar/TabBar'
 
 const {width} = Dimensions.get('window')
 
@@ -31,6 +32,7 @@ const ProductContainer = styled.View`
   width: ${width / 2 - 30}px;
   height: auto;
   padding: ${({theme}) => theme.metrics.min}px;
+  padding-top: 5px;
 `
 
 const Image = styled.Image.attrs({
@@ -39,6 +41,7 @@ const Image = styled.Image.attrs({
   }
 })`
   height: 140px;
+  border-radius: ${({theme}) => theme.metrics.radius}px;
 `
 
 const Footer = styled.View`
@@ -58,7 +61,7 @@ const Name = styled.Text.attrs({
 `
 
 const Price = styled(Name)`
-  color: ${({theme}) => theme.hsl.orange};
+  color: ${({theme}) => theme.hsl.pink};
   margin-bottom: 0;
 `
 
@@ -77,7 +80,7 @@ const ProductsList = ({data}) => (
         </ProductContainer>
       </Product>
     )}
-    ListHeaderComponent={Header}
+    ListHeaderComponent={TabBar}
   />
 )
 

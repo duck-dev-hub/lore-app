@@ -4,6 +4,8 @@ import {createStackNavigator} from 'react-navigation-stack'
 import Home from '~/screens/Home/Home'
 import Cart from '~/screens/Cart/Cart'
 
+import Header from '~/components/Header/Header'
+
 const Navigation = createStackNavigator(
   {
     Home,
@@ -11,7 +13,7 @@ const Navigation = createStackNavigator(
   },
   {
     defaultNavigationOptions: {
-      header: null
+      header: Header
     }
   }
 )
