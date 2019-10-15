@@ -1,19 +1,18 @@
 import React from 'react'
 import {FlatList} from 'react-native'
+import {connect} from 'react-redux'
 
 import {Container, Categoria, Label, Dot} from './styles'
 
-import tmp from './tmp'
-
-const BottomBar = () => (
+const TabBar = ({active, categories}) => (
   <Container>
     <FlatList
-      data={tmp}
+      data={categories}
       keyExtractor={item => String(item.id)}
-      renderItem={({item, index}) => (
+      renderItem={({item}) => (
         <Categoria>
-          <Label active={index === 0}>{item.title}</Label>
-          <Dot active={index === 0} />
+          <Label active={item.id === active}>{item.title}</Label>
+          <Dot active={item.id === active} />
         </Categoria>
       )}
       horizontal={true}
@@ -22,4 +21,9 @@ const BottomBar = () => (
   </Container>
 )
 
-export default BottomBar
+const mapStateToProps = state => ({
+  categories: state.shop.categories,
+  active: state.shop.active
+})
+
+export default connect(mapStateToProps)(TabBar)

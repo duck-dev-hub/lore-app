@@ -1,22 +1,21 @@
 import React, {Component, Fragment} from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {ActivityIndicator} from 'react-native'
 
 import ShopActions from '~/store/ducks/shop'
 import Container from '~/components/UI/Container'
 import ProductList from '~/components/ProductsList/ProductsList'
 import api from '~/services/api'
 import {Circle, CartIcon, BottomTarget} from '~/components/UI/Icons'
+import Loading from '~/components/UI/Loading'
 
 import {shadow} from '~/theme/shadow'
-import theme from '~/theme'
 
 class Shop extends Component {
   componentDidMount() {
-    const {requestProducts} = this.props
-
-    requestProducts()
+    const {requestProducts, requestCategories} = this.props
+    requestCategories()
+    requestProducts(0)
   }
 
   async _getProducts() {
@@ -44,7 +43,7 @@ class Shop extends Component {
     return (
       <Container>
         {loading ? (
-          <ActivityIndicator size={16} color={theme.hsl.purple} />
+          <Loading />
         ) : (
           <Fragment>
             {products.length > 0 && (

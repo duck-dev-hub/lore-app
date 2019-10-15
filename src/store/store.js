@@ -5,10 +5,7 @@ import rootReducer from './ducks/rootReducer'
 const middlewares = []
 
 const composer = __DEV__
-  ? compose(
-      applyMiddleware(...middlewares),
-      console.tron.createEnhancer()
-    )
+  ? compose(applyMiddleware(...middlewares))
   : applyMiddleware(...middlewares)
 
 const store = createStore(rootReducer, composer)

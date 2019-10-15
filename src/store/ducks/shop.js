@@ -4,8 +4,9 @@ import Immutable from 'seamless-immutable'
 // Actions e Types
 const {Types, Creators: ShopActions} = createActions({
   requestCategories: null,
-  requestProducts: ['category'],
-  requestProductsSuccess: ['products'],
+  requestCategoriesSuccess: ['categories'],
+  requestProducts: ['categoryId'],
+  requestProductsSuccess: ['products', 'categoryId'],
   requestProductsFailure: null
 })
 
@@ -18,17 +19,20 @@ const INITIAL_STATE = Immutable({
   products: [],
   loading: true,
   erro: false,
-  categories: []
+  categories: [],
+  active: 0
 })
 
 const HANDLERS = {
   [ShopTypes.REQUEST_PRODUCTS]: state => state.merge({loading: true}),
 
-  [ShopTypes.REQUEST_PRODUCTS_SUCCESS]: (state, {products}) =>
-    state.merge({loading: false, products}),
+  [ShopTypes.REQUEST_PRODUCTS_SUCCESS]: (state, {products, categoryId}) =>
+    state.merge({loading: false, products, active: categoryId}),
 
   [ShopTypes.REQUEST_PRODUCTS_FAILURE]: state =>
-    state.merge({loading: false, erro: true})
+    state.merge({loading: false, erro: true}),
+  [ShopTypes.REQUEST_CATEGORIES_SUCCESS]: (state, {categories}) =>
+    state.merge({categories})
 }
 
 export const shopReducer = createReducer(INITIAL_STATE, HANDLERS)

@@ -8,7 +8,6 @@ import TargetButton from '~/components/UI/TargetButton'
 import {X} from '~/components/UI/Icons'
 import {shadowMax} from '~/theme/shadow'
 
-import tmp from './tmp'
 import {
   List,
   Product,
@@ -51,7 +50,7 @@ class Carrinho extends Component {
       <Container>
         {carrinho.length > 0 ? (
           <List
-            data={tmp}
+            data={carrinho}
             keyExtractor={item => String(item.id)}
             renderItem={({item}) => (
               <Product>
