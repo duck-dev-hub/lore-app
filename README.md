@@ -23,7 +23,7 @@ Antes de iniciar o projeto certifique de possuir o json-server intalado em sua m
 
 ## Screenshots:
 
-![camisetas](https://github.com/antunesgabriel/lore-app/tree/master/prints/camisetas.png)
-![camisas](https://github.com/antunesgabriel/lore-app/tree/master/prints/camisas.png)
-![detalhes](https://github.com/antunesgabriel/lore-app/tree/master/prints/detalhes.png)
-![carrinho](https://github.com/antunesgabriel/lore-app/tree/master/prints/carrinho.png)
+![camisetas](/prints/camisetas.png)
+![camisas](/prints/camisas.png)
+![detalhes](/prints/detalhes.png)
+![carrinho](/prints/carrinho.png)
