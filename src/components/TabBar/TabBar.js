@@ -4,13 +4,13 @@ import {connect} from 'react-redux'
 
 import {Container, Categoria, Label, Dot} from './styles'
 
-const TabBar = ({active, categories}) => (
+const TabBar = ({active, categories, requestCategory}) => (
   <Container>
     <FlatList
       data={categories}
       keyExtractor={item => String(item.id)}
       renderItem={({item}) => (
-        <Categoria>
+        <Categoria onPress={() => requestCategory(item.id)}>
           <Label active={item.id === active}>{item.title}</Label>
           <Dot active={item.id === active} />
         </Categoria>

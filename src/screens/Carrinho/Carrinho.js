@@ -42,16 +42,30 @@ class Carrinho extends Component {
     return total
   }
 
+  _setAmountProduct = (product, value) => {
+    const {setAmountProduct} = this.props
+
+    const amount = value === '' ? 0 : value
+
+    setAmountProduct(product, Number(amount))
+  }
+
+  _removeProduct = product => {
+    const {removeProduct} = this.props
+
+    removeProduct(product)
+  }
+
   render() {
     const {carrinho} = this.props
-    const {_calcTotal} = this
+    const {_calcTotal, _setAmountProduct, _removeProduct} = this
 
     return (
       <Container>
         {carrinho.length > 0 ? (
           <List
             data={carrinho}
-            keyExtractor={item => String(item.id)}
+            keyExtractor={item => `#${item.id}${item.category_id}`}
             renderItem={({item}) => (
               <Product>
                 <Image source={{uri: item.image}} />
@@ -62,9 +76,13 @@ class Carrinho extends Component {
                   <Price>{item.price}</Price>
                 </Section>
 
-                <Quantidade value={item.quantidade} />
+                <Quantidade
+                  value={String(item.amount)}
+                  onChangeText={value => _setAmountProduct(item, value)}
+                  keyboardType="numeric"
+                />
                 <Top>
-                  <TargetButton>
+                  <TargetButton onPress={() => _removeProduct(item)}>
                     <X />
                   </TargetButton>
                 </Top>

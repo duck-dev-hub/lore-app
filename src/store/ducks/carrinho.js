@@ -4,8 +4,8 @@ import Immutable from 'seamless-immutable'
 // Types e Actions
 const {Types, Creators: CarrinhoActions} = createActions({
   addProduct: ['product'],
-  setAmountProduct: ['productID', 'amount'],
-  removeProduct: ['productID']
+  setAmountProduct: ['product', 'amount'],
+  removeProduct: ['product']
 })
 
 export const CarrinhoTypes = Types
@@ -14,8 +14,10 @@ export default CarrinhoActions
 
 // Helper
 
-const searchProduct = (carrinho, productID) => {
-  const exist = carrinho.findIndex(product => product.id === productID)
+const searchProduct = (carrinho, productID, categoryId) => {
+  const exist = carrinho.findIndex(product => {
+    return product.id === productID && product.category_id === categoryId
+  })
   return exist !== -1
 }
 
@@ -28,17 +30,17 @@ const HANDLERS = {
   [CarrinhoTypes.ADD_PRODUCT]: (state, {product}) => {
     const {carrinho} = state
 
-    const exist = searchProduct(carrinho, product.id)
+    const exist = searchProduct(carrinho, product.id, product.category_id)
 
     if (!exist) {
       return state.merge({
-        carrinho: state.carrinho.push({...product, amount: 1})
+        carrinho: [...state.carrinho, {...product, amount: 1}]
       })
     }
 
     const newCarrinho = carrinho.map(prod => {
-      if (prod.id === product.id) {
-        return {...prod, amount: prod.amount++}
+      if (prod.id === product.id && prod.category_id === product.category_id) {
+        return {...prod, amount: prod.amount + 1}
       }
 
       return prod
@@ -47,18 +49,18 @@ const HANDLERS = {
     return state.merge({carrinho: newCarrinho})
   },
 
-  [CarrinhoTypes.SET_AMOUNT_PRODUCT]: (state, {productID, amount}) => {
+  [CarrinhoTypes.SET_AMOUNT_PRODUCT]: (state, {product, amount}) => {
     const {carrinho} = state
 
-    const exist = searchProduct(carrinho, productID)
+    const exist = searchProduct(carrinho, product.id, product.category_id)
 
     if (!exist) {
       return state
     }
 
     const newCarrinho = carrinho.map(prod => {
-      if (prod.id === productID) {
-        return {...prod, amount: Number(amount)}
+      if (prod.id === product.id && prod.category_id === product.category_id) {
+        return {...prod, amount: amount}
       }
 
       return prod
@@ -67,16 +69,20 @@ const HANDLERS = {
     return state.merge({carrinho: newCarrinho})
   },
 
-  [CarrinhoTypes.REMOVE_PRODUCT]: (state, {productID}) => {
+  [CarrinhoTypes.REMOVE_PRODUCT]: (state, {product}) => {
     const {carrinho} = state
 
-    const exist = searchProduct(carrinho, productID)
+    const exist = searchProduct(carrinho, product.id, product.category_id)
 
     if (!exist) {
       return state
     }
 
-    const newCarrinho = carrinho.filter(product => product.id !== productID)
+    const newCarrinho = carrinho.filter(
+      prod => prod.id !== product.id || prod.category_id !== product.category_id
+    )
+
+    console.tron.log(newCarrinho)
 
     return state.merge({carrinho: newCarrinho})
   }

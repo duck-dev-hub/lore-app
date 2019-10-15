@@ -1,8 +1,11 @@
 import React, {Component} from 'react'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
 
+import CarrinhoActions from '~/store/ducks/carrinho'
 import TargetButton from '~/components/UI/TargetButton'
 import {shadowMax} from '~/theme/shadow'
-import {CircleLine, Voltar} from '~/components/UI/Icons'
+import {Voltar} from '~/components/UI/Icons'
 import Container from '~/components/UI/Container'
 
 import {
@@ -19,15 +22,23 @@ import {
 } from './styles.js'
 
 class Detalhes extends Component {
-  goBack = () => {
+  _goBack = () => {
     const {navigation} = this.props
 
     navigation.goBack()
   }
 
+  _addProduct = product => {
+    const {addProduct} = this.props
+
+    addProduct(product)
+
+    alert('Produto adcionado ao carrinho')
+  }
+
   render() {
     const {navigation} = this.props
-    const {goBack} = this
+    const {_goBack, _addProduct} = this
 
     const product = navigation.getParam('product')
 
@@ -47,7 +58,7 @@ class Detalhes extends Component {
           </Section>
 
           <Section>
-            <TargetButton>
+            <TargetButton onPress={() => _addProduct(product)}>
               <Buy style={shadowMax}>
                 <BuyText>Adcionar ao carrinho</BuyText>
               </Buy>
@@ -55,7 +66,7 @@ class Detalhes extends Component {
           </Section>
 
           <Section style={styles.absoluteTop}>
-            <TargetButton onPress={goBack}>
+            <TargetButton onPress={_goBack}>
               <Voltar />
             </TargetButton>
           </Section>
@@ -65,4 +76,10 @@ class Detalhes extends Component {
   }
 }
 
-export default Detalhes
+const mapActionsToProps = dispatch =>
+  bindActionCreators(CarrinhoActions, dispatch)
+
+export default connect(
+  null,
+  mapActionsToProps
+)(Detalhes)

@@ -20,7 +20,7 @@ const INITIAL_STATE = Immutable({
   loading: true,
   erro: false,
   categories: [],
-  active: 0
+  active: 1
 })
 
 const HANDLERS = {

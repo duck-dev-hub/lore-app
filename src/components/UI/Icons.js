@@ -42,7 +42,7 @@ export const BottomTarget = styled(TargetButton)`
 `
 
 export const X = styled(Feather).attrs({
-  name: 'X',
+  name: 'x',
   size: 16
 })`
   color: ${({theme}) => theme.hsl.darker};

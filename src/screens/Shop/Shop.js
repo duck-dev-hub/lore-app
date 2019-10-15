@@ -15,7 +15,7 @@ class Shop extends Component {
   componentDidMount() {
     const {requestProducts, requestCategories} = this.props
     requestCategories()
-    requestProducts(0)
+    requestProducts(1)
   }
 
   async _getProducts() {
@@ -36,9 +36,14 @@ class Shop extends Component {
     navigation.navigate('Carrinho')
   }
 
+  _requestProductsCategory = categoryId => {
+    const {requestProducts} = this.props
+    requestProducts(categoryId)
+  }
+
   render() {
-    const {products, loading} = this.props
-    const {handleChoseProduct, goCarrinho} = this
+    const {products, loading, categories} = this.props
+    const {handleChoseProduct, goCarrinho, _requestProductsCategory} = this
 
     return (
       <Container>
@@ -46,10 +51,11 @@ class Shop extends Component {
           <Loading />
         ) : (
           <Fragment>
-            {products.length > 0 && (
+            {products.length > 0 && categories.length > 0 && (
               <ProductList
                 data={products}
                 pressInProduct={handleChoseProduct}
+                requestCategory={_requestProductsCategory}
               />
             )}
           </Fragment>
@@ -66,7 +72,8 @@ class Shop extends Component {
 
 const mapStateToProps = state => ({
   products: state.shop.products,
-  loading: state.shop.loading
+  loading: state.shop.loading,
+  categories: state.shop.categories
 })
 
 const mapActionsToProps = dispatch => bindActionCreators(ShopActions, dispatch)

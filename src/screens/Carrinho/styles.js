@@ -1,7 +1,12 @@
 import styled from 'styled-components/native'
 import TargetButton from '~/components/UI/TargetButton'
 
-export const List = styled.FlatList`
+export const List = styled.FlatList.attrs({
+  contentContainerStyle: {
+    paddingTop: 10,
+    paddingBottom: 10
+  }
+})`
   flex: 1;
   padding: 0 ${({theme}) => theme.metrics.max}px;
 `
@@ -54,14 +59,15 @@ export const Brand = styled.Text`
 
 export const Quantidade = styled.TextInput`
   padding: ${({theme}) => theme.metrics.min}px;
-  width: 40px;
+  width: 30px;
   border-radius: ${({theme}) => theme.metrics.radius}px;
   border: 1px solid ${({theme}) => theme.hex.greyTransparent};
+  margin-right: 5px;
 `
 export const Top = styled.View`
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 1px;
+  right: 1px;
 `
 
 export const TotalLabel = styled.Text`

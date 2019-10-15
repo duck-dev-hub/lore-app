@@ -64,7 +64,7 @@ const Price = styled(Name)`
   margin-bottom: 0;
 `
 
-const ProductsList = ({data, pressInProduct}) => (
+const ProductsList = ({data, pressInProduct, requestCategory}) => (
   <List
     data={data}
     keyExtractor={item => String(item.id)}
@@ -79,7 +79,7 @@ const ProductsList = ({data, pressInProduct}) => (
         </ProductContainer>
       </Product>
     )}
-    ListHeaderComponent={TabBar}
+    ListHeaderComponent={() => <TabBar requestCategory={requestCategory} />}
   />
 )
 
