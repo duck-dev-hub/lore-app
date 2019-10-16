@@ -23,7 +23,6 @@ Antes de iniciar o projeto certifique de possuir o json-server intalado em sua m
 
 ## Screenshots:
 
-![camisetas](/prints/camisetas.png)
-![camisas](/prints/camisas.png)
-![detalhes](/prints/detalhes.png)
-![carrinho](/prints/carrinho.png)
+<img src="./prints/camisetas.png" width="200" height="400" alt="camisetas"/>
+<img src="./prints/detalhes.png" width="200" height="400" alt="detalhes"/>
+<img src="./prints/carrinho.png" width="200" height="400" alt="carrinho"/>
