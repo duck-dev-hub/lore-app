@@ -4,7 +4,8 @@
 
 ## Como rodar o projeto :
 
-Antes de iniciar o projeto certifique de possuir o json-server intalado em sua maqui de forma global.
+Antes de iniciar o projeto certifique de [possuir o setup para trabalhar com react-native](https://facebook.github.io/react-native/docs/getting-started) e o json-server
+intalado em sua maqui de forma global.
 
 - Clone o projeto:
 
